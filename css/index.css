@@ -1,0 +1,5 @@
+@charset "utf-8";
+body { font-family: Arial, sans-serif; text-align: center; }
+#lyrics { font-size: 24px; margin-top: 50px; transition: opacity 1s; }
+#input { margin-top: 20px; font-size: 18px; padding: 5px; }
+#score { margin-top: 20px; }
