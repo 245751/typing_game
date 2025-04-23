@@ -1,33 +1,26 @@
 import { romajiLyrics } from './romajiLyrics.js';
+import { displaySwitching } from './displaySwitching.js';
 const lyricskana = "あったか さいこう".split(' ');
 let index = 0
 let score = 0
-const lyricsElement = document.getElementById("lyrics");
-const romajiLyricsElement = document.getElementById("romajiLyrics");
-const scoreElement = document.getElementById("score")
-
-function displayLyrics(romaji){
-    lyricsElement.innerText=lyricskana[index]
-    romajiLyricsElement.innerText=romaji
-    scoreElement.innerText=score
-}
 
 document.addEventListener("keydown", event =>{
-    if(event.key==lyricsRomaji.charAt(0)){
-        score++
-        scoreElement.innerText=score
-        lyricsRomaji.shift()
-        if(lyricsRomaji.length()==0){
-            index++
-            lyricsRomaji.set(lyricskana[index])
-            lyricsElement.innerText=lyricskana[index]
-        }
-        romajiLyricsElement.innerText=lyricsRomaji.show()
+    if(event.key!==lyricsRomaji.charAt(0)){return}
+    score++
+    displaySwitch.updateScore(score)
+    lyricsRomaji.shift()
+    if(lyricsRomaji.length()==0){
+        index++
+        lyricsRomaji.set(lyricskana[index])
+        displaySwitch.updateLyrics(lyricskana[index],lyricsRomaji.show())
     }
+    displaySwitch.updateLyrics(lyricskana[index],lyricsRomaji.show())
 });
 
 
 const lyricsRomaji =new romajiLyrics(lyricskana[index])
-displayLyrics(lyricsRomaji.show())
+const displaySwitch = new displaySwitching("lyrics","romajiLyrics","score")
+displaySwitch.updateLyrics(lyricskana[index],lyricsRomaji.show())
+displaySwitch.updateScore(score)
 
 
