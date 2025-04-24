@@ -11,6 +11,7 @@ export class romajiLyrics {
 
     // 先頭から1文字削除
     shift() {
+        if(this.#romanization.length==0)return
         this.#romanization = this.#romanization.slice(1);
     }
 
